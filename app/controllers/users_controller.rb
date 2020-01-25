@@ -1,4 +1,4 @@
-def UsersController < ApplicationController
+class UsersController < ApplicationController
 
   def new
     @user = User.new
@@ -27,18 +27,18 @@ def UsersController < ApplicationController
   end
 
   def update
-  @user = User.find(params[:id])
-  if @user.save
-    session[:user_id] = @user.id
-    redirect_to "/users/#{@user.id}"
-  else
-    redirect_to "/users/#{@user.id}/edit"
+    @user = User.find(params[:id])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to "/users/#{@user.id}"
+    else
+      redirect_to "/users/#{@user.id}/edit"
+    end
   end
-end
 
-private
-def user_params
-  params.require(:user).permit(:email, :username, :password, :password_confirmation, :admin)
-end
+  private
+  def user_params
+    params.require(:user).permit(:email, :username, :password, :password_confirmation, :admin)
+  end
 
 end

@@ -16,10 +16,10 @@
 <% else %>
   <p>No reviews are listed for this product.</p>
 <% end %>
-
+<% if current_user && current_user.admin == true %>
 <p><%= link_to "Add a Review", new_product_review_path(@product) %></p>
 
 <p><%= link_to "Edit Product", edit_product_path(@product) %></p>
 <p><%= link_to "Delete Product", product_path(@product), :data => {:confirm => "Are you sure?", :method => "delete"} %></p>
-
+<% end %>
 <p><%= link_to "Return to Products", products_path %></p>

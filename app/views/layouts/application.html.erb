@@ -12,7 +12,7 @@
   <body>
     <% if current_user %>
   <%= current_user.username %> | <%= current_user.email %> | <%= link_to "Profile", "/users/#{current_user.id}" %> | <%= link_to "Sign out", '/signout' %>
-
+  <% end %>
     <%= yield %>
   </body>
 </html>

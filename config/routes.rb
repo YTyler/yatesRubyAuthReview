@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'products#index'
+  root to: 'sessions#new'
+  
   resources :products do
     resources :reviews
   end

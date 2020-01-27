@@ -1,5 +1,7 @@
 <h1>Our Products</h1>
 
+<p><%= link_to "Most Reviewed Product/s", '/most-reviewed' %></p>
+
 <% if @products.any? %>
 <ul>
   <% @products.each do |product| %>

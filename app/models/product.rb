@@ -8,10 +8,10 @@ class Product < ApplicationRecord
 
   # Scopes
   scope :most_reviews, -> {(
-    select("product.id, product.name, product.cost, product.country_of_origin, count(review.id) as review_count")
-    .joins(:reviews).group("product.id")
+    select("products.id, products.name, products.cost, products.country_of_origin, count(reviews.id) as review_count")
+    .joins(:reviews)
+    .group("products.id")
     .order("review_count DESC")
-    .sort()
     .limit(1)
     )}
   scope :three_recent, -> { order(created_at: :desc).limit(3) }

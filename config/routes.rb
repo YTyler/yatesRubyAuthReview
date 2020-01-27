@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy'
 
   get '/most-reviewed' => 'products#most'
+  get '/recent' => 'products#recent'
+  get '/usa' => 'products#usa'
 end

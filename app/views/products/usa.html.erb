@@ -1,0 +1,11 @@
+<h1>Products made in the United States</h1>
+
+<% if @products.any? %>
+<ul>
+  <% @products.each do |product| %>
+  <li><%= link_to product.name, product_path(product) %></li>
+  <% end %>
+</ul>
+<% else %>
+<p>Product List is Empty</p>
+<% end %>

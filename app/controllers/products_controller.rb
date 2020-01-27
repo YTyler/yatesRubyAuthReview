@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authorize
+
   def index
     @products = Product.all
     render :index
@@ -56,6 +57,16 @@ class ProductsController < ApplicationController
       end
     end
     render :show
+  end
+
+  def recent
+    @products = Product.three_recent
+    render :recent
+  end
+
+  def usa
+    @products = Product.usa_made
+    render :usa
   end
 
   private

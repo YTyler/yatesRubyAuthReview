@@ -15,7 +15,7 @@ class Product < ApplicationRecord
     .limit(1)
     )}
   scope :three_recent, -> { order(created_at: :desc).limit(3) }
-  scope :usa_made, -> {where("country_of_origin = United States")}
+  scope :usa_made, -> {where("country_of_origin = 'United States'")}
   # Callbacks
   before_save(:format_input)
 

@@ -7,9 +7,15 @@ class Product < ApplicationRecord
   validates :country_of_origin, presence: true
 
   # Scopes
-  scope :most_reviews, -> {}
+  scope :most_reviews, -> {(
+    select("product.id, product.name, product.cost, product.country_of_origin, count(review.id) as review_count")
+    .joins(:reviews).group("product.id")
+    .order("review_count DESC")
+    .sort()
+    .limit(1)
+    )}
   scope :three_recent, -> { order(created_at: :desc).limit(3) }
-  scope :usa_made, -> { where}
+  scope :usa_made, -> {where("country_of_origin = United States")}
   # Callbacks
   before_save(:format_input)
 
